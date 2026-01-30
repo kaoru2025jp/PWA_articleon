@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>同意ログ送信</title>
+<style>
+  body {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  input {
+    font-size: 16px;
+    padding: 5px;
+    width: 200px;
+  }
+  button {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>同意する条文番号を入力</h2>
+
+<input id="numbers" placeholder="例：13456">
+<br>
+<button onclick="sendConsent()">同意する</button>
+
+<script>
+function sendConsent() {
+  const numbers = document.getElementById("numbers").value;
+
+  if (!numbers) {
+    alert("条文番号を入力してください");
+    return;
+  }
+
+  const GAS_URL = "ここにGASのWebアプリURLを入れてください";
+
+  const script = document.createElement("script");
+  script.src =
+    GAS_URL +
+    "?numbers=" + encodeURIComponent(numbers) +
+    "&callback=handleResponse";
+
+  document.body.appendChild(script);
+}
+
+function handleResponse(res) {
+  if (res.status === "ok") {
+    alert("同意ログを記録しました");
+  }
+}
+</script>
+
+</body>
+</html>
