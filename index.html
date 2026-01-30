@@ -30,14 +30,14 @@
 
 <script>
 function sendConsent() {
-  const numbers = document.getElementById("numbers").value;
+  const numbers = document.getElementById("numbers")value;
 
   if (!numbers) {
     alert("条文番号を入力してください");
     return;
   }
 
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbyrcavSoSCsZmlML5Jt4nWqC0XnL3zHOnDQ0TPAdWIfifjJ6V5voytbqK1_rAluD8Jm/exec";
+  const GAS_URL = "ここにGASのWebアプリURLを入れてください";
 
   const script = document.createElement("script");
   script.src =
@@ -53,22 +53,6 @@ function handleResponse(res) {
     alert("同意ログを記録しました");
   }
 }
-function sendConsentLog() {
-  var number = document.getElementById("articlesInput").value;
-
-  var data = "articles_number=" + encodeURIComponent(number);
-
-  fetch(GAS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: data
-  });
-}
-
-
-  
 </script>
 
 </body>
