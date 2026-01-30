@@ -53,6 +53,22 @@ function handleResponse(res) {
     alert("同意ログを記録しました");
   }
 }
+function sendConsentLog() {
+  var number = document.getElementById("articlesInput").value;
+
+  var data = "articles_number=" + encodeURIComponent(number);
+
+  fetch(GAS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: data
+  });
+}
+
+
+  
 </script>
 
 </body>
